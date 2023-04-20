@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Recipe Recommender</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/assets/css/main.css" />
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	</head>
+	<body class="is-preload">
+
+			<form method="POST">
+				<div class="input-wrapper">
+					<div>Enter ingredients: <br/>
+						<input type="text" name="ing[]" value=""/>
+						<a href="javascript:void(0);" class="add-input" title="Add Ingredient">+</a>
+				</div>
+			</div>
+				<input type="submit" name="cmdsubmit">
+			</form>
+
+		<script>
+			$(document).ready(function() {
+				var add_input = $('.add-input');
+				var input_wrapper = $('.input-wrapper');
+				var new_input = '<div><input type="text" name="ing[]" value=""/><a href="javascript:void(0);" class="remove-input" title="Remove input">-</a>'
+				var add_input_count = 1;
+				$(add_input).click(function(){
+					add_input_count++;
+					$(input_wrapper).append(new_input);
+				});
+				$(input_wrapper).on('click', '.remove-input', function(e) {
+					e.preventDefault();
+					$(this).parent('div').remove();
+					add_input_count--;
+				});
+			});
+		</script>
+
+	</body>
+</html>
